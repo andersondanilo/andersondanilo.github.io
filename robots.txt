@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://andersondanilo.com/sitemap.xml 
+Sitemap: http://andersondanilo.github.io/sitemap.xml 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Javascript | Anderson Danilo]]></title>
-  <link href="http://andersondanilo.com/blog/categories/javascript/atom.xml" rel="self"/>
-  <link href="http://andersondanilo.com/"/>
-  <updated>2016-01-25T23:00:33-02:00</updated>
-  <id>http://andersondanilo.com/</id>
+  <link href="http://andersondanilo.github.io/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://andersondanilo.github.io/"/>
+  <updated>2016-01-25T23:25:16-02:00</updated>
+  <id>http://andersondanilo.github.io/</id>
   <author>
     <name><![CDATA[Anderson Danilo]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Criando Um Aplicativo Para FirefoxOS Com Backbone]]></title>
-    <link href="http://andersondanilo.com/blog/2014/08/21/criando-um-aplicativo-para-firefoxos-com-backbone/"/>
+    <link href="http://andersondanilo.github.io/blog/2014/08/21/criando-um-aplicativo-para-firefoxos-com-backbone/"/>
     <updated>2014-08-21T20:49:24-03:00</updated>
-    <id>http://andersondanilo.com/blog/2014/08/21/criando-um-aplicativo-para-firefoxos-com-backbone</id>
+    <id>http://andersondanilo.github.io/blog/2014/08/21/criando-um-aplicativo-para-firefoxos-com-backbone</id>
     <content type="html"><![CDATA[<p>Olá, neste tutorial você vai aprender os seus primeiros passos para criar um aplicativo FirefoxOS com o Backbone, vamos ao conceitos.</p>
 
 <!-- more -->
@@ -136,9 +136,9 @@ algumas API que você pode consultar em:</p>
   
   <entry>
     <title type="html"><![CDATA[FirefoxOS: Alarme E Notificação]]></title>
-    <link href="http://andersondanilo.com/blog/2014/08/16/firefoxos-alarme-e-notificacao/"/>
+    <link href="http://andersondanilo.github.io/blog/2014/08/16/firefoxos-alarme-e-notificacao/"/>
     <updated>2014-08-16T22:06:31-03:00</updated>
-    <id>http://andersondanilo.com/blog/2014/08/16/firefoxos-alarme-e-notificacao</id>
+    <id>http://andersondanilo.github.io/blog/2014/08/16/firefoxos-alarme-e-notificacao</id>
     <content type="html"><![CDATA[<p>Olá, Seja bem vindo ao primeiro Tutorial sobre o FirefoxoS que estou postando nesse Blog, Apesar desse Tutorial estar voltado para o FirefoxOS você pode usar esta API no navegador (veja a tabela de compatibilidade, que ainda é muito restrita).</p>
 
 <!-- more -->

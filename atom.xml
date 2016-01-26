@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Anderson Danilo]]></title>
-  <link href="http://andersondanilo.com/atom.xml" rel="self"/>
-  <link href="http://andersondanilo.com/"/>
-  <updated>2016-01-25T23:00:33-02:00</updated>
-  <id>http://andersondanilo.com/</id>
+  <link href="http://andersondanilo.github.io/atom.xml" rel="self"/>
+  <link href="http://andersondanilo.github.io/"/>
+  <updated>2016-01-25T23:25:16-02:00</updated>
+  <id>http://andersondanilo.github.io/</id>
   <author>
     <name><![CDATA[Anderson Danilo]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[5 Funcionalidades Interessantes Do PHP]]></title>
-    <link href="http://andersondanilo.com/blog/2015/07/13/5-funcionalidades-interessantes-do-php/"/>
+    <link href="http://andersondanilo.github.io/blog/2015/07/13/5-funcionalidades-interessantes-do-php/"/>
     <updated>2015-07-13T21:27:11-03:00</updated>
-    <id>http://andersondanilo.com/blog/2015/07/13/5-funcionalidades-interessantes-do-php</id>
+    <id>http://andersondanilo.github.io/blog/2015/07/13/5-funcionalidades-interessantes-do-php</id>
     <content type="html"><![CDATA[<p>Olá, neste artigo vou exemplificar o uso de 5 funcionalidades interessantes do PHP.</p>
 
 <p>Vamos a primeira delas:</p>
@@ -154,9 +154,9 @@
   
   <entry>
     <title type="html"><![CDATA[Atualizando O Alcatel One Touch Fire]]></title>
-    <link href="http://andersondanilo.com/blog/2014/10/05/atualizando-o-alcatel-one-touch-fire/"/>
+    <link href="http://andersondanilo.github.io/blog/2014/10/05/atualizando-o-alcatel-one-touch-fire/"/>
     <updated>2014-10-05T11:36:39-03:00</updated>
-    <id>http://andersondanilo.com/blog/2014/10/05/atualizando-o-alcatel-one-touch-fire</id>
+    <id>http://andersondanilo.github.io/blog/2014/10/05/atualizando-o-alcatel-one-touch-fire</id>
     <content type="html"><![CDATA[<p>Olá, neste post vou ensinar como atualizar o Alcatel One Touch Fire para o FirefoxOS 2.0.</p>
 
 <p>Este processo vai ser executado a partir de linux (Xubuntu 14.04, versão leve do Ubuntu).</p>
@@ -292,9 +292,9 @@ Copie a pasta &ldquo;clockworkmod&rdquo; para o seu computador. (Aqui foram 247m
   
   <entry>
     <title type="html"><![CDATA[Criando Um Aplicativo Para FirefoxOS Com Backbone]]></title>
-    <link href="http://andersondanilo.com/blog/2014/08/21/criando-um-aplicativo-para-firefoxos-com-backbone/"/>
+    <link href="http://andersondanilo.github.io/blog/2014/08/21/criando-um-aplicativo-para-firefoxos-com-backbone/"/>
     <updated>2014-08-21T20:49:24-03:00</updated>
-    <id>http://andersondanilo.com/blog/2014/08/21/criando-um-aplicativo-para-firefoxos-com-backbone</id>
+    <id>http://andersondanilo.github.io/blog/2014/08/21/criando-um-aplicativo-para-firefoxos-com-backbone</id>
     <content type="html"><![CDATA[<p>Olá, neste tutorial você vai aprender os seus primeiros passos para criar um aplicativo FirefoxOS com o Backbone, vamos ao conceitos.</p>
 
 <!-- more -->
@@ -414,9 +414,9 @@ algumas API que você pode consultar em:</p>
   
   <entry>
     <title type="html"><![CDATA[FirefoxOS: Alarme E Notificação]]></title>
-    <link href="http://andersondanilo.com/blog/2014/08/16/firefoxos-alarme-e-notificacao/"/>
+    <link href="http://andersondanilo.github.io/blog/2014/08/16/firefoxos-alarme-e-notificacao/"/>
     <updated>2014-08-16T22:06:31-03:00</updated>
-    <id>http://andersondanilo.com/blog/2014/08/16/firefoxos-alarme-e-notificacao</id>
+    <id>http://andersondanilo.github.io/blog/2014/08/16/firefoxos-alarme-e-notificacao</id>
     <content type="html"><![CDATA[<p>Olá, Seja bem vindo ao primeiro Tutorial sobre o FirefoxoS que estou postando nesse Blog, Apesar desse Tutorial estar voltado para o FirefoxOS você pode usar esta API no navegador (veja a tabela de compatibilidade, que ainda é muito restrita).</p>
 
 <!-- more -->
@@ -531,9 +531,9 @@ algumas API que você pode consultar em:</p>
   
   <entry>
     <title type="html"><![CDATA[Lançamento]]></title>
-    <link href="http://andersondanilo.com/blog/2014/08/10/lancamento/"/>
+    <link href="http://andersondanilo.github.io/blog/2014/08/10/lancamento/"/>
     <updated>2014-08-10T12:50:26-03:00</updated>
-    <id>http://andersondanilo.com/blog/2014/08/10/lancamento</id>
+    <id>http://andersondanilo.github.io/blog/2014/08/10/lancamento</id>
     <content type="html"><![CDATA[<p>Olá, este blog trará exemplos e tutoriais voltados para o desenvolvimento Web, fique a vontade para postar comentários sejam eles dúvidas, criticas ou elogios, o objetivo deste blog é construir conhecimento a partir de experiências próprias.</p>
 
 <p>Como primeira experiência a compartilhar quero informar que estou utilizando o Octopress para criar este blog, o que signfica que eu vou escrever os meus posts em um arquivo de texto com markdown em um editor de texto (estou usando o Sublime Text para escrever este Post), O Octopress não possui um painel administrativo, tudo é feito na linha de comando com o &ldquo;rake&rdquo; (automatizador de tarefas padrão do Ruby) e depois é gerado um conjunto de páginas estáticas que eu posso hospedar em qualquer servidor web (não é necessário o servidor possuir PHP, ruby ou nenhuma outra linguagem dinamica)</p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Php | Anderson Danilo]]></title>
-  <link href="http://andersondanilo.com/blog/categories/php/atom.xml" rel="self"/>
-  <link href="http://andersondanilo.com/"/>
-  <updated>2016-01-25T23:00:33-02:00</updated>
-  <id>http://andersondanilo.com/</id>
+  <link href="http://andersondanilo.github.io/blog/categories/php/atom.xml" rel="self"/>
+  <link href="http://andersondanilo.github.io/"/>
+  <updated>2016-01-25T23:25:16-02:00</updated>
+  <id>http://andersondanilo.github.io/</id>
   <author>
     <name><![CDATA[Anderson Danilo]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[5 Funcionalidades Interessantes Do PHP]]></title>
-    <link href="http://andersondanilo.com/blog/2015/07/13/5-funcionalidades-interessantes-do-php/"/>
+    <link href="http://andersondanilo.github.io/blog/2015/07/13/5-funcionalidades-interessantes-do-php/"/>
     <updated>2015-07-13T21:27:11-03:00</updated>
-    <id>http://andersondanilo.com/blog/2015/07/13/5-funcionalidades-interessantes-do-php</id>
+    <id>http://andersondanilo.github.io/blog/2015/07/13/5-funcionalidades-interessantes-do-php</id>
     <content type="html"><![CDATA[<p>Olá, neste artigo vou exemplificar o uso de 5 funcionalidades interessantes do PHP.</p>
 
 <p>Vamos a primeira delas:</p>
