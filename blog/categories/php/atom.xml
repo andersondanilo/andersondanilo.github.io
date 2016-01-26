@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Php | Anderson Danilo]]></title>
+  <link href="http://andersondanilo.com/blog/categories/php/atom.xml" rel="self"/>
+  <link href="http://andersondanilo.com/"/>
+  <updated>2016-01-25T23:00:33-02:00</updated>
+  <id>http://andersondanilo.com/</id>
+  <author>
+    <name><![CDATA[Anderson Danilo]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[5 Funcionalidades Interessantes Do PHP]]></title>
+    <link href="http://andersondanilo.com/blog/2015/07/13/5-funcionalidades-interessantes-do-php/"/>
+    <updated>2015-07-13T21:27:11-03:00</updated>
+    <id>http://andersondanilo.com/blog/2015/07/13/5-funcionalidades-interessantes-do-php</id>
+    <content type="html"><![CDATA[<p>Olá, neste artigo vou exemplificar o uso de 5 funcionalidades interessantes do PHP.</p>
+
+<p>Vamos a primeira delas:</p>
+
+<!-- more -->
+
+
+<h2>1. Indução de tipo</h2>
+
+<p>Se você veio de uma linguagem com tipagem estática, você com certeza já sentiu falta de ter certeza que nenhum programador vai passar o tipo errado.</p>
+
+<p>Embora o costume das linguagens de tipagem dinâmica seja favorecer a documentação e o &ldquo;duck typing&rdquo;, a tipagem estática não deixa de ser interessante.</p>
+
+<p>Esta funcionalidade está presente desde a versão 5.3 para classes, e da versão 7 para tipos primários, exemplo:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">formatDate</span><span class="p">(</span><span class="nx">DateTime</span> <span class="nx">$date</span><span class="p">,</span> <span class="nx">$format</span><span class="o">=&amp;</span><span class="nx">rsquo</span><span class="p">;</span><span class="nx">d</span><span class="o">/</span><span class="nx">m</span><span class="o">/</span><span class="nx">Y</span><span class="o">&amp;</span><span class="err">#</span><span class="mi">8217</span><span class="p">;)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">$date</span><span class="o">-&gt;</span><span class="nx">format</span><span class="p">(</span><span class="nx">$format</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Neste exemplo, se você enviar qualquer argumento que não seja descendente da classe DateTime, o php vai lançar um erro fatal.</p>
+
+<p>Saiba mais em: <a href="http://php.net/manual/pt_BR/language.oop5.typehinting.php">http://php.net/manual/pt_BR/language.oop5.typehinting.php</a></p>
+
+<h2>2. Return no include</h2>
+
+<p>Suponhamos que você tenha 2 arquivos, principal.php e incluso.php, você pode fazer isso:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>incluso.php </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">return</span> <span class="nx">array</span><span class="p">(</span>
+</span><span class='line'>    <span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">teste</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;</span> <span class="o">=&gt;</span> <span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">funcionou</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;</span>
+</span><span class='line'><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>principal.php </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$dados</span> <span class="o">=</span> <span class="nx">include</span> <span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">incluso</span><span class="p">.</span><span class="nx">php</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;;</span>
+</span><span class='line'><span class="nx">var_dump</span><span class="p">(</span><span class="nx">$dados</span><span class="p">[</span><span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">teste</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;]);</span> <span class="c1">// vai resultar &amp;ldquo;Funcionou!!&amp;rdquo;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Nos exemplos da documentação do PHP você pode aprender mais: <a href="http://php.net/manual/pt_BR/function.include.php">http://php.net/manual/pt_BR/function.include.php</a></p>
+
+<h2>3. Operador binário</h2>
+
+<p>Você conhece o operador ternário? como abaixo:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$periodo</span> <span class="o">=</span> <span class="nx">$hora</span> <span class="o">&gt;</span> <span class="mi">12</span> <span class="o">?</span> <span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">tarde</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;</span> <span class="o">:</span> <span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">manh</span><span class="err">ã</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Porém, a partir da versão 5.3 você pode usar o que foi chamado de operador binário, exemplo:
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$tipo</span> <span class="o">=</span> <span class="nx">$variavel1</span> <span class="o">?:</span> <span class="nx">$variavel2</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Neste caso se a $variavel1 for vazia a $variavel2 é usada.</p>
+
+<h2>4. Metaprogramação: variável por nome</h2>
+
+<p>Como chamar uma variável pelo seu nome? dessa forma parece simples, mas se você tem um nome que pode variar? você pode chamar como &ldquo;string&rdquo; da seguinte forma:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$nome</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">Teste</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;;</span>
+</span><span class='line'><span class="nx">$variavel</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">nome</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;;</span>
+</span><span class='line'><span class="nx">echo</span> <span class="nx">$$variavel</span><span class="p">;</span> <span class="c1">// &amp;lsquo;Teste&amp;rsquo;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>O mesmo vale para nome de funções, métodos ou classes.</p>
+
+<h2>5. Late Static Binding</h2>
+
+<p>Se você já precisou trabalhar com herença de classes estáticas você provavelmente já enfrentou o seguinte problema:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kr">class</span> <span class="nx">Pessoa1Static</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="kr">static</span> <span class="nx">$nome</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">Teste1</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;;</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="kr">public</span> <span class="kd">function</span> <span class="kr">static</span> <span class="nx">dizerNome</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="nx">echo</span> <span class="s1">&#39;Meu nome é &#39;</span><span class="p">.</span><span class="nx">self</span><span class="o">::</span><span class="nx">$nome</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="kr">class</span> <span class="nx">Pessoa2Static</span> <span class="kr">extends</span> <span class="nx">Pessoa1Static</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="kr">static</span> <span class="nx">$nome</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">Teste2</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;;</span>
+</span><span class='line'><span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Pessoa2Static</span><span class="o">::</span><span class="nx">dizerNome</span><span class="p">();</span> <span class="c1">// &amp;lsquo;Teste1&amp;rsquo;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Como pode ser observado, esperavamos que a classe Pessoa2Static referencia-se suas próprias váriaveis estáticas nos métodos herdados, porém o mesmo não acontece.</p>
+
+<p>Para resolver isso você pode usar &ldquo;static::&rdquo; ao invés de &ldquo;self::&rdquo;</p>
+
+<p><a href="http://php.net/manual/pt_BR/language.oop5.late-static-bindings.php">http://php.net/manual/pt_BR/language.oop5.late-static-bindings.php</a></p>
+]]></content>
+  </entry>
+  
+</feed>

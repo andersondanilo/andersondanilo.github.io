@@ -1,0 +1,49 @@
+.portfolio-item {
+    width:49%;
+    margin: 0.2% 0.5%;
+    position: relative;
+    display:block;
+    text-decoration: none;
+    white-space: inherit;
+    float:left;
+}
+
+.portfolio-image {
+    width:100%;
+}
+
+.portfolio-label {
+    position: absolute;
+    border-radius:0.3em;
+    display: block;
+    color: transparent;
+    background: transparent;
+    top:0;
+    left:0;
+    bottom:0.3em;
+    right:0;
+    text-align:center;
+    vertical-align: middle;
+    -webkit-transition: 0.5s background;
+    transition: 0.5s background;
+    font-size:1.5em;
+}
+
+.portfolio-item:hover .portfolio-label {
+    color:white;
+    background:rgba(0,0,0,0.8);
+    -webkit-transition: 0.5s background;
+    transition: 0.5s background;
+}
+
+.portfolio-item:hover .portfolio-label {
+    padding-top:25%;
+}
+
+.portfolio-gallery .gallery-item {
+    float:left;
+    margin: 0.3em 0.5em;
+}
+.portfolio-gallery img {
+    height:10em;
+}

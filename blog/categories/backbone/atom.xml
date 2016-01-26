@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Backbone | Anderson Danilo]]></title>
+  <link href="http://andersondanilo.com/blog/categories/backbone/atom.xml" rel="self"/>
+  <link href="http://andersondanilo.com/"/>
+  <updated>2016-01-25T23:00:33-02:00</updated>
+  <id>http://andersondanilo.com/</id>
+  <author>
+    <name><![CDATA[Anderson Danilo]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Criando Um Aplicativo Para FirefoxOS Com Backbone]]></title>
+    <link href="http://andersondanilo.com/blog/2014/08/21/criando-um-aplicativo-para-firefoxos-com-backbone/"/>
+    <updated>2014-08-21T20:49:24-03:00</updated>
+    <id>http://andersondanilo.com/blog/2014/08/21/criando-um-aplicativo-para-firefoxos-com-backbone</id>
+    <content type="html"><![CDATA[<p>Olá, neste tutorial você vai aprender os seus primeiros passos para criar um aplicativo FirefoxOS com o Backbone, vamos ao conceitos.</p>
+
+<!-- more -->
+
+
+<h2>Gaia UI Building Blocks</h2>
+
+<p>O <a href="https://github.com/mozilla-b2g/Gaia-UI-Building-Blocks">Gaia UI Building Blocks</a> é um conjunto de arquivos (Html, Css e Imagens) que representam a aparência nativa do FirefoxOS</p>
+
+<h2>Manifest</h2>
+
+<p>O Arquivo de Manifesto especifica as informações básicas sobre o seu aplicativo, como nome, descrição, autor, permissão das api&rsquo;s e etc&hellip;</p>
+
+<h2>Zepto</h2>
+
+<p>O <a href="http://zeptojs.com/">Zepto</a> é uma biblioteca javascript com foco principal na facilidade de manuseio do DOM. Ele é muito compatível com o jQuery.</p>
+
+<h2>Underscore</h2>
+
+<p>O <a href="http://underscorejs.org/">Underscore</a> é uma biblioteca javascript que oferece várias funções simples e úteis de uso geral.</p>
+
+<h2>Backbone</h2>
+
+<p>O <a href="http://backbonejs.org/">Backbone</a> é um framework para javascript muito leve e fácil de usar, muito conhecido. nele você separa a sua aplicação em Model, Collection, View e Template.</p>
+
+<h3>Model</h3>
+
+<p>O modelo é o objeto responsável por representar uma entidade do seu banco de dados.</p>
+
+<h3>Collection</h3>
+
+<p>Uma coleção é o objeto responsável por gerenciar um conjunto de modelos</p>
+
+<h3>View</h3>
+
+<p>A Visualização é o objeto responsável por mostrar ao usuário as informações (que podem vir de um modelo ou coleção)</p>
+
+<h3>Template</h3>
+
+<p>Um Template é a aparência que o usuário vê, no nosso caso é um arquivo html.</p>
+
+<h2>Nosso primeiro aplicativo</h2>
+
+<p>Nosso primeiro aplicativo vai ser o mais simples possível, NÃO vamos usar nenhum gerenciador de pacotes como o <a href="http://bower.io/">Bower Componentes</a>, nem algo como o <a href="http://requirejs.org/">RequireJS</a> para separar o código em módulos. Eu recomendo você posquisar sobre eles futuramente.</p>
+
+<h3>O que precisamos baixar</h3>
+
+<ul>
+<li><a href="http://backbonejs.org/">Backbone</a></li>
+<li><a href="http://buildingfirefoxos.com/building-blocks">Gaia Building Blocks</a>, se você não achar o link de Download <a href="https://github.com/buildingfirefoxos/Building-Blocks/archive/gh-pages.zip">clique aqui</a></li>
+</ul>
+
+
+<h3>Um simples bloco de notas</h3>
+
+<h4>Estrutura de arquivos</h4>
+
+<p>A nossa estrutura de arquivos será bem simplória, considere que este é o nosso primeiro aplicativo.</p>
+
+<ul>
+<li>js/app.js</li>
+<li>js/backbone.min.js</li>
+<li>style/main.css</li>
+<li>style/gaia/* (nesta pasta você vai colar o conteúdo de &ldquo;Building-Blocks-gh-pages/style&rdquo;, na realidade você só precisa colar os arquivos que você vai usar, mas como estamos apenas em um exemplo não se preocupe com isso).</li>
+<li>index.html</li>
+<li>manifest.webapp</li>
+</ul>
+
+
+<h4>manifest.webapp</h4>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">name</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">Tutorial</span> <span class="nx">Bloco</span> <span class="nx">de</span> <span class="nx">Notas</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;,</span>
+</span><span class='line'>  <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">description</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">Um</span> <span class="nx">simples</span> <span class="nx">exemplo</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;,</span>
+</span><span class='line'>  <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">launch_path</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="err">/index.html&amp;rdquo;,</span>
+</span><span class='line'>  <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">icons</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="mi">128</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="err">/images/app_icon_128.png&amp;rdquo;,</span>
+</span><span class='line'>    <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="mi">60</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="err">/images/app_icon_60.png&amp;rdquo;</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">version</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="mf">1.2</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;,</span>
+</span><span class='line'>  <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">developer</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">name</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">Arnau</span> <span class="nx">March</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;,</span>
+</span><span class='line'>    <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">url</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;http://buildingfirefoxos.com&quot;</span><span class="o">&gt;</span><span class="nx">http</span><span class="o">:</span><span class="c1">//buildingfirefoxos.com&lt;/a&gt;&amp;rdquo;</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">default_locale</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">en</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>O restante do código é como se você estivesse programando para um navegador html5, com
+algumas API que você pode consultar em:</p>
+
+<p><a href="https://developer.mozilla.org/en-US/Apps/Reference">https://developer.mozilla.org/en-US/Apps/Reference</a></p>
+
+<p>Para detalhes de como criar um aplicação no backbone, consulte:</p>
+
+<p><a href="https://backbonetutorials.com/">https://backbonetutorials.com/</a></p>
+
+<p><a href="http://blog.fernandomantoan.com/serie-backbone-js-parte-1-introducao/">http://blog.fernandomantoan.com/serie-backbone-js-parte-1-introducao/</a></p>
+]]></content>
+  </entry>
+  
+</feed>

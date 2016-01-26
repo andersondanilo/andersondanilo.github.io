@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Anderson Danilo]]></title>
+  <link href="http://andersondanilo.com/atom.xml" rel="self"/>
+  <link href="http://andersondanilo.com/"/>
+  <updated>2016-01-25T23:00:33-02:00</updated>
+  <id>http://andersondanilo.com/</id>
+  <author>
+    <name><![CDATA[Anderson Danilo]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[5 Funcionalidades Interessantes Do PHP]]></title>
+    <link href="http://andersondanilo.com/blog/2015/07/13/5-funcionalidades-interessantes-do-php/"/>
+    <updated>2015-07-13T21:27:11-03:00</updated>
+    <id>http://andersondanilo.com/blog/2015/07/13/5-funcionalidades-interessantes-do-php</id>
+    <content type="html"><![CDATA[<p>Olá, neste artigo vou exemplificar o uso de 5 funcionalidades interessantes do PHP.</p>
+
+<p>Vamos a primeira delas:</p>
+
+<!-- more -->
+
+
+<h2>1. Indução de tipo</h2>
+
+<p>Se você veio de uma linguagem com tipagem estática, você com certeza já sentiu falta de ter certeza que nenhum programador vai passar o tipo errado.</p>
+
+<p>Embora o costume das linguagens de tipagem dinâmica seja favorecer a documentação e o &ldquo;duck typing&rdquo;, a tipagem estática não deixa de ser interessante.</p>
+
+<p>Esta funcionalidade está presente desde a versão 5.3 para classes, e da versão 7 para tipos primários, exemplo:</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">formatDate</span><span class="p">(</span><span class="nx">DateTime</span> <span class="nx">$date</span><span class="p">,</span> <span class="nx">$format</span><span class="o">=</span><span class="s1">&#39;d/m/Y&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">$date</span><span class="o">-&gt;</span><span class="nx">format</span><span class="p">(</span><span class="nx">$format</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Neste exemplo, se você enviar qualquer argumento que não seja descendente da classe DateTime, o php vai lançar um erro fatal.</p>
+
+<p>Saiba mais em: <a href="http://php.net/manual/pt_BR/language.oop5.typehinting.php">http://php.net/manual/pt_BR/language.oop5.typehinting.php</a></p>
+
+<h2>2. Return no include</h2>
+
+<p>Suponhamos que você tenha 2 arquivos, principal.php e incluso.php, você pode fazer isso:</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>incluso.php </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">return</span> <span class="nx">array</span><span class="p">(</span>
+</span><span class='line'>    <span class="s1">&#39;teste&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;funcionou&#39;</span>
+</span><span class='line'><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>principal.php </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$dados</span> <span class="o">=</span> <span class="nx">include</span> <span class="s1">&#39;incluso.php&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nx">var_dump</span><span class="p">(</span><span class="nx">$dados</span><span class="p">[</span><span class="s1">&#39;teste&#39;</span><span class="p">]);</span> <span class="c1">// vai resultar &quot;Funcionou!!&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Nos exemplos da documentação do PHP você pode aprender mais: <a href="http://php.net/manual/pt_BR/function.include.php">http://php.net/manual/pt_BR/function.include.php</a></p>
+
+<h2>3. Operador binário</h2>
+
+<p>Você conhece o operador ternário? como abaixo:</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$periodo</span> <span class="o">=</span> <span class="nx">$hora</span> <span class="o">&gt;</span> <span class="mi">12</span> <span class="o">?</span> <span class="s1">&#39;tarde&#39;</span> <span class="o">:</span> <span class="s1">&#39;manhã&#39;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Porém, a partir da versão 5.3 você pode usar o que foi chamado de operador binário, exemplo:</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$tipo</span> <span class="o">=</span> <span class="nx">$variavel1</span> <span class="o">?:</span> <span class="nx">$variavel2</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Neste caso se a $variavel1 for vazia a $variavel2 é usada.</p>
+
+<h2>4. Metaprogramação: variável por nome</h2>
+
+<p>Como chamar uma variável pelo seu nome? dessa forma parece simples, mas se você tem um nome que pode variar? você pode chamar como &ldquo;string&rdquo; da seguinte forma:</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$nome</span> <span class="o">=</span> <span class="s1">&#39;Teste&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nx">$variavel</span> <span class="o">=</span> <span class="s1">&#39;nome&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nx">echo</span> <span class="nx">$$variavel</span><span class="p">;</span> <span class="c1">// &#39;Teste&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>O mesmo vale para nome de funções, métodos ou classes.</p>
+
+<h2>5. Late Static Binding</h2>
+
+<p>Se você já precisou trabalhar com herença de classes estáticas você provavelmente já enfrentou o seguinte problema:</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kr">class</span> <span class="nx">Pessoa1Static</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="kr">static</span> <span class="nx">$nome</span> <span class="o">=</span> <span class="s1">&#39;Teste1&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kr">public</span> <span class="kd">function</span> <span class="kr">static</span> <span class="nx">dizerNome</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="nx">echo</span> <span class="s1">&#39;Meu nome é &#39;</span><span class="p">.</span><span class="nx">self</span><span class="o">::</span><span class="nx">$nome</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kr">class</span> <span class="nx">Pessoa2Static</span> <span class="kr">extends</span> <span class="nx">Pessoa1Static</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="kr">static</span> <span class="nx">$nome</span> <span class="o">=</span> <span class="s1">&#39;Teste2&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">Pessoa2Static</span><span class="o">::</span><span class="nx">dizerNome</span><span class="p">();</span> <span class="c1">// &#39;Teste1&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Como pode ser observado, esperavamos que a classe Pessoa2Static referencia-se suas próprias váriaveis estáticas nos métodos herdados, porém o mesmo não acontece.</p>
+
+<p>Para resolver isso você pode usar &ldquo;static::&rdquo; ao invés de &ldquo;self::&rdquo;</p>
+
+<p><a href="http://php.net/manual/pt_BR/language.oop5.late-static-bindings.php">http://php.net/manual/pt_BR/language.oop5.late-static-bindings.php</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Atualizando O Alcatel One Touch Fire]]></title>
+    <link href="http://andersondanilo.com/blog/2014/10/05/atualizando-o-alcatel-one-touch-fire/"/>
+    <updated>2014-10-05T11:36:39-03:00</updated>
+    <id>http://andersondanilo.com/blog/2014/10/05/atualizando-o-alcatel-one-touch-fire</id>
+    <content type="html"><![CDATA[<p>Olá, neste post vou ensinar como atualizar o Alcatel One Touch Fire para o FirefoxOS 2.0.</p>
+
+<p>Este processo vai ser executado a partir de linux (Xubuntu 14.04, versão leve do Ubuntu).</p>
+
+<!-- more -->
+
+
+<h2>Créditos</h2>
+
+<p>Este tutorial foi feito com base nestes daqui:</p>
+
+<p><a href="http://ftb.rgaiacs.com/2014/05/19/atualizando_alcatel.html#id2">http://ftb.rgaiacs.com/2014/05/19/atualizando_alcatel.html#id2</a></p>
+
+<p><a href="https://support.mozilla.org/pt-BR/forums/firefox-os-portuguese-forum/710009?last=57854">https://support.mozilla.org/pt-BR/forums/firefox-os-portuguese-forum/710009?last=57854</a></p>
+
+<p>Eles possuem imagem</p>
+
+<h2>Riscos</h2>
+
+<p>Você pode estragar o seu celular.</p>
+
+<p>De qualquer forma você vai perder todos os seus contatos.</p>
+
+<h2>Vantagens</h2>
+
+<p>Se você ainda está com a versão 1.1 (atualmente os celulares vendidos pela Vivo vem com esta versão), o seu celular não tem algumas novas &ldquo;Api&rdquo;, como por exemplo o microfone, na versão 1.1 nenhum aplicativo desenvolvido por terceiros pode usar o microfone.</p>
+
+<h2>Conceitos</h2>
+
+<h3>Modo Bootloader</h3>
+
+<p>Nesse modo você pode copiar a imagem para o seu celular, para entrar reinicie o celular e durante a tela de reinicialização segure o botão de &ldquo;diminuir volume&rdquo; por 5 segundos, ele vai travar na tela branca, pronto, você esta no modo Bootloader.</p>
+
+<h3>Modo Recovery</h3>
+
+<p>É um modo de recuperação, no nosso caso vamos instalar um novo modo de recuperação capaz de gravar um backup do sistema no cartão de memória. Para entrar no modo recovery reinicie o celular e segure o botão &ldquo;aumentar volume&rdquo; por 5 segundos (na tela branca).</p>
+
+<h2>O que você vai precisar</h2>
+
+<p>O adb e fastboot</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt-get install android-tools-adb android-tools-fastboot</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<h2>Arquivos</h2>
+
+<p>Primeiro precisamos de dois arquivos, o Recovery (para fazer o backup antes) e a Imagem do Sistema.</p>
+
+<p>Imagem do Recovery: <a href="http://vegnuxmod.wordpress.com/recovery/">http://vegnuxmod.wordpress.com/recovery/</a>
+Clockworkmod | download | md5: f3d20b0ba8dc587774f80188a39a6339</p>
+
+<p>Imagem do Sistema: <a href="http://vegnuxmod.wordpress.com/hamachi-alcatel-otf/">http://vegnuxmod.wordpress.com/hamachi-alcatel-otf/</a>
+v2.0-20140820 | Mega | md5: 6359aa0d1cee2377b91a19fdd4f92043</p>
+
+<h2>Verificando se os arquivos não estão corrompidos</h2>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>md5sum hamachi-recovery_cwm_20140928.img
+</span><span class='line'>md5sum images-hamachi-v2.0-20140820.tar.xz</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Os dois comandos tem que imprimir respectivamente os md5 indicados no síte do vegnuxmod (e referenciados aqui, no início do post).</p>
+
+<h2>Gravando o Novo Modo Recovery no Celular</h2>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo -i
+</span><span class='line'>cd pasta-do-download
+</span><span class='line'>fastboot flash recovery hamachi-recovery_cwm_20140928.img</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Vai aparecer uma mensagem: &ldquo;Waiting for device&rdquo;, você deve reiniciar o seu aparelho e entrar no modo &ldquo;Bootloader&rdquo;. (conforme ensinado nos conceitos)</p>
+
+<p>Vai aparecer uma mensagem &ldquo;writing &lsquo;recovery&rsquo;&rdquo;, quando aparecer a mensagem &lsquo;finished. total time: xxxx.s&rsquo;, está pronto, você pode reiniciar o seu celular com o seguinte comando.</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>fastboot reboot</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<h2>Efetuando o backup</h2>
+
+<p>Entre no modo Recovery (como explicado no conceitos). Use a tecla aumentar volume e diminuir volume para alternar entre as telas do recovery, e o botão que você usa para ligar para selecionar uma opção:
+Entre em: &ldquo;backup and restore&rdquo;.
+Entre em: &ldquo;backup&rdquo;, é a primeira opção.
+Aguarde.
+Aqui demorou uns 2 minutos.</p>
+
+<p>Vamos reiniciar o sistema novamente:
+Entre em: &ldquo;++++ Go back ++++&rdquo;
+Entre em: &ldquo;Reboot system now&rdquo;</p>
+
+<p>Agora vamos copiar os arquivos gerados para o nosso computador:
+Entre no Cartão de Memória a partir de seu computador (normalmente, como você faz quando quer copiar arquivos).
+Copie a pasta &ldquo;clockworkmod&rdquo; para o seu computador. (Aqui foram 247mb em +/- 5 minutos).</p>
+
+<h2>Copiando o novo sistema</h2>
+
+<p>Já temos o backup salvo no nosso computador e vamos copiar o novo sistema. Primeiro vamos descompacatar o arquivo que baixamos (o firefox os 2):</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd pasta-do-download
+</span><span class='line'>tar -xvf images-hamachi-v2.0-20140820.tar.xz
+</span><span class='line'>cd images-hamachi-v2.0-20140820/
+</span><span class='line'>sudo -i</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Entre no modo Bootloader (reinicie e segure o botão de diminuir volume na tela branca por 5 segundos).</p>
+
+<p>Agora vamos copiar o sistema:</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>fastboot flash boot boot.img
+</span><span class='line'>fastboot flash userdata userdata.img
+</span><span class='line'>fastboot flash system system.img
+</span><span class='line'>fastboot erase cache
+</span><span class='line'>fastboot reboot</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Pronto, o sistema esta funcionando, Selecione as configurações</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Criando Um Aplicativo Para FirefoxOS Com Backbone]]></title>
+    <link href="http://andersondanilo.com/blog/2014/08/21/criando-um-aplicativo-para-firefoxos-com-backbone/"/>
+    <updated>2014-08-21T20:49:24-03:00</updated>
+    <id>http://andersondanilo.com/blog/2014/08/21/criando-um-aplicativo-para-firefoxos-com-backbone</id>
+    <content type="html"><![CDATA[<p>Olá, neste tutorial você vai aprender os seus primeiros passos para criar um aplicativo FirefoxOS com o Backbone, vamos ao conceitos.</p>
+
+<!-- more -->
+
+
+<h2>Gaia UI Building Blocks</h2>
+
+<p>O <a href="https://github.com/mozilla-b2g/Gaia-UI-Building-Blocks">Gaia UI Building Blocks</a> é um conjunto de arquivos (Html, Css e Imagens) que representam a aparência nativa do FirefoxOS</p>
+
+<h2>Manifest</h2>
+
+<p>O Arquivo de Manifesto especifica as informações básicas sobre o seu aplicativo, como nome, descrição, autor, permissão das api&rsquo;s e etc&hellip;</p>
+
+<h2>Zepto</h2>
+
+<p>O <a href="http://zeptojs.com/">Zepto</a> é uma biblioteca javascript com foco principal na facilidade de manuseio do DOM. Ele é muito compatível com o jQuery.</p>
+
+<h2>Underscore</h2>
+
+<p>O <a href="http://underscorejs.org/">Underscore</a> é uma biblioteca javascript que oferece várias funções simples e úteis de uso geral.</p>
+
+<h2>Backbone</h2>
+
+<p>O <a href="http://backbonejs.org/">Backbone</a> é um framework para javascript muito leve e fácil de usar, muito conhecido. nele você separa a sua aplicação em Model, Collection, View e Template.</p>
+
+<h3>Model</h3>
+
+<p>O modelo é o objeto responsável por representar uma entidade do seu banco de dados.</p>
+
+<h3>Collection</h3>
+
+<p>Uma coleção é o objeto responsável por gerenciar um conjunto de modelos</p>
+
+<h3>View</h3>
+
+<p>A Visualização é o objeto responsável por mostrar ao usuário as informações (que podem vir de um modelo ou coleção)</p>
+
+<h3>Template</h3>
+
+<p>Um Template é a aparência que o usuário vê, no nosso caso é um arquivo html.</p>
+
+<h2>Nosso primeiro aplicativo</h2>
+
+<p>Nosso primeiro aplicativo vai ser o mais simples possível, NÃO vamos usar nenhum gerenciador de pacotes como o <a href="http://bower.io/">Bower Componentes</a>, nem algo como o <a href="http://requirejs.org/">RequireJS</a> para separar o código em módulos. Eu recomendo você posquisar sobre eles futuramente.</p>
+
+<h3>O que precisamos baixar</h3>
+
+<ul>
+<li><a href="http://backbonejs.org/">Backbone</a></li>
+<li><a href="http://buildingfirefoxos.com/building-blocks">Gaia Building Blocks</a>, se você não achar o link de Download <a href="https://github.com/buildingfirefoxos/Building-Blocks/archive/gh-pages.zip">clique aqui</a></li>
+</ul>
+
+
+<h3>Um simples bloco de notas</h3>
+
+<h4>Estrutura de arquivos</h4>
+
+<p>A nossa estrutura de arquivos será bem simplória, considere que este é o nosso primeiro aplicativo.</p>
+
+<ul>
+<li>js/app.js</li>
+<li>js/backbone.min.js</li>
+<li>style/main.css</li>
+<li>style/gaia/* (nesta pasta você vai colar o conteúdo de &ldquo;Building-Blocks-gh-pages/style&rdquo;, na realidade você só precisa colar os arquivos que você vai usar, mas como estamos apenas em um exemplo não se preocupe com isso).</li>
+<li>index.html</li>
+<li>manifest.webapp</li>
+</ul>
+
+
+<h4>manifest.webapp</h4>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Tutorial Bloco de Notas&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Um simples exemplo&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;launch_path&quot;</span><span class="o">:</span> <span class="s2">&quot;/index.html&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;icons&quot;</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="s2">&quot;128&quot;</span><span class="o">:</span> <span class="s2">&quot;/images/app_icon_128.png&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;60&quot;</span><span class="o">:</span> <span class="s2">&quot;/images/app_icon_60.png&quot;</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;1.2&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;developer&quot;</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Arnau March&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://buildingfirefoxos.com&quot;</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="s2">&quot;default_locale&quot;</span><span class="o">:</span> <span class="s2">&quot;en&quot;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>O restante do código é como se você estivesse programando para um navegador html5, com
+algumas API que você pode consultar em:</p>
+
+<p><a href="https://developer.mozilla.org/en-US/Apps/Reference">https://developer.mozilla.org/en-US/Apps/Reference</a></p>
+
+<p>Para detalhes de como criar um aplicação no backbone, consulte:</p>
+
+<p><a href="https://backbonetutorials.com/">https://backbonetutorials.com/</a></p>
+
+<p><a href="http://blog.fernandomantoan.com/serie-backbone-js-parte-1-introducao/">http://blog.fernandomantoan.com/serie-backbone-js-parte-1-introducao/</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[FirefoxOS: Alarme E Notificação]]></title>
+    <link href="http://andersondanilo.com/blog/2014/08/16/firefoxos-alarme-e-notificacao/"/>
+    <updated>2014-08-16T22:06:31-03:00</updated>
+    <id>http://andersondanilo.com/blog/2014/08/16/firefoxos-alarme-e-notificacao</id>
+    <content type="html"><![CDATA[<p>Olá, Seja bem vindo ao primeiro Tutorial sobre o FirefoxoS que estou postando nesse Blog, Apesar desse Tutorial estar voltado para o FirefoxOS você pode usar esta API no navegador (veja a tabela de compatibilidade, que ainda é muito restrita).</p>
+
+<!-- more -->
+
+
+<h2>Conceitos</h2>
+
+<h3>O que a API de Notificação faz?</h3>
+
+<p>A <a href="https://developer.mozilla.org/en-US/docs/Web/API/notification">API de Notificação</a>, como o próprio nome indica, exibe uma notificação, essa é a sua única e exclusiva funcionalidade</p>
+
+<h3>O que a API de Alarme faz?</h3>
+
+<p>A <a href="https://developer.mozilla.org/pt-BR/docs/WebAPI/Alarme">API de Alarme</a> &ldquo;acorda&rdquo; o seu aplicativo, somente isso, não espere nada de mais, no caso do FirefoxOS o seu aplicativo &ldquo;acorda&rdquo; em segundo plano</p>
+
+<h2>Exemplo</h2>
+
+<h3>Criando um alarme</h3>
+
+<p>Suponhamos que você deseja fazer um &ldquo;Alarme&rdquo; para acordar o dono do celular na manhã de natal de 2014, o primeiro passo é criar um alarme para esta data:</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'>    <span class="c1">// No objeto Date do Javascript, o número do mês vai de 0 à 11</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">alarmDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">2014</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">navigator</span><span class="p">.</span><span class="nx">mozAlarms</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">alarmDate</span><span class="p">,</span> <span class="s2">&quot;ignoreTimezone&quot;</span><span class="p">,</span> <span class="s2">&quot;Natal&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">request</span><span class="p">.</span><span class="nx">onsuccess</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">alarmId</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">result</span><span class="p">;</span>
+</span><span class='line'>        <span class="c1">// Pronto, você cadastrou o alarme para 25/11/2014</span>
+</span><span class='line'>    <span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Pronto, você tem um alarme, mas lembre-se que isso não vai exibir nenhum alerta, somente vai acordar o seu aplicativo. Agora você deve exibir uma notificação quando o alarme for chamado.</p>
+
+<h3>Criando uma notificação</h3>
+
+<p>O Nosso primeiro problema é que a implementação foi modificada e aparelhos das primeiras versões do FirefoxOS possuem uma interface diferente para criar uma notificação, portanto teremos que fazer uma função para lidar com isso, não vou reinventar a roda, estou colocando um código que é usado no aplicativo <a href="https://github.com/nickdesaulniers/fxos-irc">FireseaIRC de nickdesaulniers</a></p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">Notification</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">sendNotification</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">return</span> <span class="k">new</span> <span class="nx">Notification</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'>    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">mozNotification</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">sendNotification</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="kd">var</span> <span class="nx">result</span><span class="p">;</span>
+</span><span class='line'>            <span class="nx">result</span> <span class="o">=</span> <span class="nx">navigator</span><span class="p">.</span><span class="nx">mozNotification</span><span class="p">.</span><span class="nx">createNotification</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span> <span class="nx">options</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span> <span class="nx">options</span><span class="p">.</span><span class="nx">icon</span><span class="p">);</span>
+</span><span class='line'>            <span class="k">return</span> <span class="nx">result</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">sendNotification</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">if</span> <span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">return</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">title</span> <span class="o">+</span> <span class="s2">&quot;: &quot;</span> <span class="o">+</span> <span class="nx">options</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+</span><span class='line'>            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">return</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">title</span><span class="p">);</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'>    <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<h3>Capturando um alarme e exibindo uma notificação</h3>
+
+<p>Pronto, já possuimos uma implementação de sendNotification, agora precisamos capturar a chamada do alarme e exibir a notificação</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'>    <span class="nx">navigator</span><span class="p">.</span><span class="nx">mozSetMessageHandler</span><span class="p">(</span><span class="s2">&quot;alarm&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">mozAlarm</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="nx">mozAlarm</span><span class="p">.</span><span class="nx">data</span> <span class="o">==</span> <span class="s2">&quot;Natal&quot;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">sendNotification</span><span class="p">(</span><span class="s2">&quot;Hoje é Natal&quot;</span><span class="p">,</span> <span class="s2">&quot;Acorde, já são 8 horas&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'>    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Entendo que no meio da leitura algumas dúvidas possam ter surgido, como: &ldquo;Porque acordar as 8 horas?&rdquo;, ou &ldquo;O que significa ignoreTimezone?&rdquo;, porém algumas destas dúvidas podem ser respondidas na documentação da mozilla.</p>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/notification">https://developer.mozilla.org/en-US/docs/Web/API/notification</a></p>
+
+<p><a href="https://developer.mozilla.org/pt-BR/docs/WebAPI/Alarme">https://developer.mozilla.org/pt-BR/docs/WebAPI/Alarme</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Lançamento]]></title>
+    <link href="http://andersondanilo.com/blog/2014/08/10/lancamento/"/>
+    <updated>2014-08-10T12:50:26-03:00</updated>
+    <id>http://andersondanilo.com/blog/2014/08/10/lancamento</id>
+    <content type="html"><![CDATA[<p>Olá, este blog trará exemplos e tutoriais voltados para o desenvolvimento Web, fique a vontade para postar comentários sejam eles dúvidas, criticas ou elogios, o objetivo deste blog é construir conhecimento a partir de experiências próprias.</p>
+
+<p>Como primeira experiência a compartilhar quero informar que estou utilizando o Octopress para criar este blog, o que signfica que eu vou escrever os meus posts em um arquivo de texto com markdown em um editor de texto (estou usando o Sublime Text para escrever este Post), O Octopress não possui um painel administrativo, tudo é feito na linha de comando com o &ldquo;rake&rdquo; (automatizador de tarefas padrão do Ruby) e depois é gerado um conjunto de páginas estáticas que eu posso hospedar em qualquer servidor web (não é necessário o servidor possuir PHP, ruby ou nenhuma outra linguagem dinamica)</p>
+
+<p>Se você ficou curioso, acesse o link abaixo</p>
+
+<p><a href="http://octopress.org/docs/blogging/">http://octopress.org/docs/blogging/</a></p>
+]]></content>
+  </entry>
+  
+</feed>
